@@ -30,7 +30,7 @@ public abstract class AbstractExcelHandler implements ExcelCommonHandler {
         }
     }
 
-    public void handlerError(List<?> data, Class clazz, boolean isWriteHeader, String sheetName, boolean isXSSF, OutputStream os) {
+    public void handlerDownload(List<?> data, Class clazz, boolean isWriteHeader, String sheetName, boolean isXSSF, OutputStream os) {
         try {
             ExcelUtils.getInstance().exportObjects2Excel(data, clazz, isWriteHeader, sheetName, isXSSF, os);
         } catch (Exception e) {

@@ -18,7 +18,7 @@ import java.util.List;
 public class TestExcelHandler extends AbstractExcelHandler {
     @Override
     public String getSheetName() {
-        return "测试表格导入";
+        return "TestExcel表格";
     }
 
     @Override
@@ -26,14 +26,15 @@ public class TestExcelHandler extends AbstractExcelHandler {
         int offsetLine = 0;
         int limitLine = 1000;
         List<TestExcel> testExcelList = this.handler(inputStream, TestExcel.class, offsetLine, limitLine, sheetIndex);
-
-        log.info("TestExcel表格导入:{}", testExcelList.toString());
+        log.info(getSheetName() + "导入:{}", testExcelList.toString());
         return testExcelList;
     }
 
+
     @Override
-    public void uploadExcelError(List<?> data, String sheetName, OutputStream os) {
-        this.handlerError(data, TestExcel.class, Boolean.TRUE, sheetName, Boolean.FALSE, os);
+    public void downloadExcel(List<?> data, OutputStream os) {
+        log.info(getSheetName() + "导出:{}", data.toString());
+        this.handlerDownload(data, TestExcel.class, Boolean.TRUE, getSheetName(), Boolean.FALSE, os);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ricemarch.excelutil.domain.excel.handler;
 
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -16,6 +17,5 @@ public interface ExcelCommonHandler {
 
     List uploadExcel(int sheetIndex, InputStream inputStream, List<String> resultErrorUrls);
 
-    void uploadExcelError(List<?> data, String sheetName, OutputStream os);
-
+    void downloadExcel(List<?> data, OutputStream os);
 }
